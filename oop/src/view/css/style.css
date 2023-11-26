@@ -1,0 +1,203 @@
+.loaders__view {
+    display: flex;
+    text-decoration: none;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 400px;
+}
+
+.loaders__view-container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    align-content: flex-start;
+}
+
+.loaders__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+.loaders__item img {
+    display: block;
+    width: 45px;
+}
+
+.loaders__item span {
+    display: inline-block;
+    max-width: 80px;
+    text-align: center;
+    word-break: break-word;
+}
+
+.container {
+    max-width: 1900px;
+    margin: 40px auto;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+
+.loaded-wrap {
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#loadFile {
+    display: none;
+}
+
+.uploadFileList {
+    display: flex;
+    min-width: 100%;
+    flex-direction: column;
+    padding: 15px;
+    box-sizing: border-box;
+    grid-row-gap: 10px;
+}
+
+.uploadFileList .bad {
+    color: red;
+}
+
+.uploadFileList .good {
+    color: green;
+}
+
+.send-files [type=file] {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+/*preloader start*/
+#preloader {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    transform: translateY(-50%);
+}
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #9370DB;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #BA55D3;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #FF00FF;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/*preloader end*/
+
+.js-context-menu {
+    position: fixed;
+    z-index: 1;
+    background: #fff;
+}
+
+.js-context-menu__item-context {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input#loadFile {
+    display: none;
+}
+
+/*paginate start*/
+.loaders__view-paginate {
+    display: flex;
+    padding: 30px 0;
+    box-sizing: border-box;
+    grid-column-gap: 10px;
+}
+
+.loaders__view-paginate > button {
+    border-radius: 50%;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    background: linear-gradient(#e66465, #9198e5);
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid silver;
+}
+
+.loaders__view-paginate > button.active {
+    background: linear-gradient(#9198e5, #e66465);
+    border: 1px solid gold;
+}
+/*paginate end*/

@@ -1,0 +1,19 @@
+{
+  "name": "bin/oop",
+  "autoload": {
+    "files": ["config/config.php"],
+    "psr-4": {
+      "Bin\\": "bin/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Mikhail Brann",
+      "email": "m.brann@intensa.ru"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "*",
+    "guzzlehttp/guzzle": "^7.0"
+  }
+}

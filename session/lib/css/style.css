@@ -1,0 +1,28 @@
+
+.tabs__head > div {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 10px 5px;
+    margin: 5px 10px;
+    cursor: pointer;
+    border: 2px solid rgba(23, 20, 20, 0.36);
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.tabs__head > div.active {
+    border: 2px solid black;
+    opacity: 1;
+}
+
+.tabs__body > div {
+    display: none;
+}
+
+.tabs__body > div.active {
+    display: inline-block;
+}
+
+.empty {
+    border: 2px solid red;
+}

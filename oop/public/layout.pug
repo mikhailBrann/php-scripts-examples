@@ -1,0 +1,24 @@
+block variables
+    - var title = 'Yandex Disk'
+
+doctype html
+html(lang="ru")
+    head
+        block metatitles
+            meta(charset='UTF-8')
+            meta(
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            )
+            title= title
+        block style
+            link(href="/oop/src/view/css/style.css" rel="stylesheet")
+    body
+        block header
+        block content
+
+        block footer
+            footer
+
+        block scripts
+            script(src="/oop/src/view/js/main.js")

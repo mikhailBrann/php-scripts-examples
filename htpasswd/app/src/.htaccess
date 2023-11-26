@@ -1,0 +1,3 @@
+RewriteEngine On
+# правило для ридеректа на publick
+RewriteRule ^(.+)?$ /public/$1

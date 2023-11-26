@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0.29
+    container_name: php_project-sql
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - mysql_php:/mysql.sql
+    networks:
+      - php_project_network
+
+  php:
+    container_name: php_project-php
+    restart: unless-stopped
+    env_file:
+      - .env
+    build:
+      context: php
+    volumes:
+      - ./app/src:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      php_project_network:
+        ipv4_address: 10.0.0.10
+
+volumes:
+  mysql_php:
+
+networks:
+  php_project_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
+          gateway: 10.0.0.1

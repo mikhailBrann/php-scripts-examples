@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Yandex Disk</title>
+    <link href="/oop/src/view/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Yandex loader</h1>
+    <div class="container">
+      <div class="loaders">
+        <div class="loaders__view-wrap">
+          <h2>Мои файлы</h2>
+          <div class="loaders__view" @click="contextClose" @contextmenu.prevent="contextOpen">
+            <template v-if="errors">
+              {{errors}}
+            </template>
+
+            <template v-if="contextMenu.active">
+              <div class="js-context-menu" :style="{top: contextMenu.menuPosition.y + 'px', left: contextMenu.menuPosition.x + 'px'}">
+                <div class="js-context-menu__item" v-show="contextMenu.createDir.btn">
+                  <div class="js-context-menu__item-title" @click="createDir">Создать директорию</div>
+                  <div class="js-context-menu__item-context" v-show="contextMenu.createDir.form">
+                    <input type="text" id="createDir" placeholder="Введите название директории:">
+                    <button>Создать</button>
+                  </div>
+                </div>
+
+                <div class="js-context-menu__item" v-show="contextMenu.uploadFile.btn">
+                  <div class="js-context-menu__item-title" @click="clickUploadFile">Загрузить файл на диск</div>
+                </div>
+
+                <div class="js-context-menu__item" v-show="contextMenu.download.btn">
+                  <div class="js-context-menu__item-title" @click="downloadItem">Скачать</div>
+                </div>
+
+                <div class="js-context-menu__item" v-show="contextMenu.rename.btn">
+                  <div class="js-context-menu__item-title" @click="renameItem">Перименовать</div>
+                  <div class="js-context-menu__item-context" v-show="contextMenu.rename.form">
+                    <input type="text" id="renameItem" placeholder="Введите новое название:">
+                    <button>Переименовать</button>
+                  </div>
+                </div>
+
+                <div class="js-context-menu__item" v-show="contextMenu.deleteFileOrFolder.btn">
+                  <div class="js-context-menu__item-title" @click="delFileOrDir">Удалить</div>
+                </div>
+
+              </div>
+            </template>
+
+            <template v-if="responseLoad">
+              <div id="preloader">
+                <div id="loader"></div>
+              </div>
+            </template>
+
+            <template v-if="fileList">
+              <template v-if="prevBtnActive">
+                <button @click="clickToBack">Назад</button>
+              </template>
+              <div class="loaders__view-container">
+                <div class="loaders__item" v-for="(item,index) in fileList" :class="[item.type == 'dir' ? 'dir' : 'image']" :data-id="index" @click="contextClose($event, true)" @dblclick="clickToFile">
+
+                  <template v-if="item.type == 'dir'">
+                    <img src="/oop/src/view/img/folder.svg" :alt="item.name">
+                  </template>
+
+                  <template v-else>
+                    <img src="/oop/src/view/img/picture_icon.svg" :alt="item.name">
+                  </template>
+
+                  <span>{{item.name}}</span>
+                </div>
+              </div>
+            </template>
+            <input type="file" id="loadFile" @change="uploadedFile">
+
+            <template v-if="limit < filesCount">
+              <div class="loaders__view-paginate">
+                <button @click="paginateFile" data-start="0" :class="[offsetPos == 0 ? 'active' : '']">1</button>
+                <button @click="paginateFile" :data-start="paginVal" :class="[offsetPos == paginVal ? 'active' : '']" v-if="paginVal % limit == 0 && paginVal != filesCount" v-for="paginVal in filesCount">{{paginVal / limit + 1}}</button>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+    <script src="/oop/src/view/js/main.js"></script>
+    <script src="/oop/src/view/js/vue.js"></script>
+  </body>
+</html>

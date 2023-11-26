@@ -1,0 +1,15 @@
+{
+    "name": "lib/session",
+    "autoload": {
+        "psr-4": {
+            "Lib\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mikhail Brann",
+            "email": "m.brann@intensa.ru"
+        }
+    ],
+    "require": {}
+}

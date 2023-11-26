@@ -1,0 +1,14 @@
+extends layout.pug
+block content
+    h1 Yandex loader
+    div.container
+        div.loaders
+            div.loaders__upload
+                h2 Загрузить файлы
+                form.send-files
+                    div.loaded-wrap
+                    input(type="file")
+                    button(type="submit") Отправить
+            div.loaders__view-wrap
+                h2 Мои файлы
+                div.loaders__view
